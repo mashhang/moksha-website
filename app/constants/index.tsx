@@ -13,7 +13,7 @@ import {
 
 export const navLinks = [
   {
-    id: "store",
+    id: "storePage",
     title: "Store",
   },
   {

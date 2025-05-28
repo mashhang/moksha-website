@@ -17,8 +17,10 @@ import instagram from "./instagram.svg";
 import linkedin from "./linkedin.svg";
 import twitter from "./twitter.svg";
 import sampleshirt from "./sampleshirt.png";
+import banner from "./banner.jpg";
 
 export {
+  banner,
   binance,
   coinbase,
   dropbox,

@@ -9,7 +9,12 @@ export default function ProductList() {
     <div className="w-full pl-5 pr-5 py-24">
       <div className="flex mb-8 justify-between">
         <h1 className={styles.paragraph2}>New Releases</h1>
-        <h1 className={styles.paragraph2}>View More</h1>
+        <a
+          href="/"
+          className={`${styles.paragraph2} text-orange-600 hover:underline`}
+        >
+          View More
+        </a>
       </div>
 
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-12 md:gap-y-36">
@@ -17,7 +22,7 @@ export default function ProductList() {
           <li key={index}>
             <a href="#">
               <div className={styles.paragraph}>
-                <div className="bg-gray-50 w-full rounded-lg overflow-hidden">
+                <div className="bg-gray-50 w-full rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
                   <Image
                     className="object-cover object-center inset-0 overflow-hidden p-4 self-center"
                     loading="lazy"

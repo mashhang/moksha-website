@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "@/public/assets";
@@ -20,7 +22,7 @@ export default function Navbar() {
               index === navLinks.length - 1 ? "mr-0" : "mr-10"
             } text-black`}
           >
-            <a href={`#${nav.id}`}>{nav.title}</a>
+            <a href={`${nav.id}`}>{nav.title}</a>
           </li>
         ))}
       </ul>

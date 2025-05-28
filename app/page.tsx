@@ -1,10 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Navbar from "./components/Navbar";
 import styles from "../app/styles";
-import { sampleshirt, logo } from "@/public/assets";
-import { footerLinks } from "../app/constants";
 import Banner from "./(public)/landingPage/Banner";
 import ProductList from "./(public)/landingPage/ProductList";
 import Footer from "./(public)/landingPage/Footer";
@@ -13,9 +10,7 @@ export default function Landing() {
   return (
     <div className="bg-white w-full overflow-hidden">
       <div className={`${styles.paddingX} ${styles.flexCenter} `}>
-        <div className={`${styles.boxWidth}`}>
-          <Navbar />
-        </div>
+        <div className={`${styles.boxWidth}`}>{/* <Navbar /> */}</div>
       </div>
 
       {/* BANNER */}
