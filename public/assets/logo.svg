@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="443" height="132" viewBox="0 0 443 132">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 51px;
+        font-family: "Accia Piano";
+        font-weight: 300;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        stroke: #000;
+        stroke-width: 1px;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <text id="MOKSHA" class="cls-1" transform="translate(40.858 95.583) scale(1.643)">MOKSHA</text>
+  <path class="cls-2" d="M-346.5-751c1.381,0,2.5,2.91,2.5,6.5s-1.119,6.5-2.5,6.5-2.5-2.91-2.5-6.5S-347.881-751-346.5-751Z"/>
+</svg>
