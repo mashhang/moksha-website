@@ -3,4 +3,5 @@
 @theme {
   /* Custom styles */
   --font-sans: "Poppins", sans-serif;
+  --black-gradient: "linear-gradient(180deg, #000000, #1a1a1a)";
 }
