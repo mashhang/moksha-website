@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 type CartItem = {
@@ -5,6 +6,8 @@ type CartItem = {
   name: string;
   size: string;
   price: number;
+  quantity: number;
+  image: string;
 };
 
 type CartDrawerProps = {
@@ -47,13 +50,23 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               Your cart is empty
             </p>
           ) : (
-            items.map(({ id, name, size, price }) => (
+            items.map(({ id, name, size, price, quantity, image }) => (
               <div key={id} className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-gray-100 rounded-lg"></div>
+                {/* <div className="w-16 h-16 bg-gray-100 rounded-lg"></div> */}
+                <Image
+                  src={image}
+                  alt={name}
+                  width={96}
+                  height={96}
+                  className="object-cover rounded-lg"
+                />
                 <div className="flex-1">
                   <p className="font-medium">{name}</p>
                   <p className="text-sm text-gray-500">Size: {size}</p>
-                  <p className="text-sm">₱{price.toFixed(2)}</p>
+                  <p className="text-sm">
+                    ₱{price.toFixed(2)} x {quantity} = ₱
+                    {(price * quantity).toFixed(2)}
+                  </p>
                 </div>
                 <div>
                   <button

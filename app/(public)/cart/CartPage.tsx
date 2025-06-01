@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 type CartItem = {
@@ -6,6 +7,7 @@ type CartItem = {
   size: string;
   price: number;
   quantity: number;
+  image: string;
 };
 
 type CartPageProps = {
@@ -33,9 +35,16 @@ export const CartPage: React.FC<CartPageProps> = ({
         {items.length === 0 ? (
           <p className="text-center text-gray-500 mt-10">Your cart is empty</p>
         ) : (
-          items.map(({ id, name, size, price, quantity }) => (
+          items.map(({ id, name, size, price, quantity, image }) => (
             <div key={id} className="flex items-center gap-4 border-b pb-4">
-              <div className="w-24 h-24 bg-gray-100 rounded-xl"></div>
+              {/* <div className="w-24 h-24 bg-gray-100 rounded-xl"></div> */}
+              <Image
+                src={image}
+                alt={name}
+                width={96}
+                height={96}
+                className="object-cover rounded-lg"
+              />
               <div className="flex-1">
                 <p className="text-lg font-medium">{name}</p>
                 <p className="text-sm text-gray-500">Size: {size}</p>
