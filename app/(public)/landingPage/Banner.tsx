@@ -28,13 +28,13 @@ export default function Banner() {
 
   return (
     <div
-      className="text-white text-center py-[340px] bg-gray-50 border-l-neutral-950 border-solid border-y-[1px] border-y-gray-200 bg-cover bg-center"
+      className="text-white text-center py-60 md:py-80 bg-gray-50 border-l-neutral-950 border-solid border-y-[1px] border-y-gray-200 bg-cover bg-center"
       style={{
         backgroundImage: `url(${banner.src})`,
         backgroundPositionY: bgOffset,
       }}
     >
-      <h1>COMING SOON!</h1>
+      <h1 className="text-2xl md:text-4xl">COMING SOON!</h1>
     </div>
   );
 }

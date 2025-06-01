@@ -22,11 +22,12 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-full overflow-hidden top-0 left-0 flex py-4 sm:px-10 md:px-20 lg:px-40 justify-between items-center navbar fixed border-b-gray-200 border-solid border-b-[1px] bg-white">
+    <nav className="z-50 w-full overflow-hidden top-0 left-0 flex py-4 sm:px-10 md:px-20 lg:px-40 justify-between items-center navbar fixed border-b-gray-200 border-solid border-b-[1px] bg-white">
       <a href="/">
         <Image src={logo} alt="moksha" className="w-[124px] h-[32px]" />
       </a>
 
+      {/* Desktop nav */}
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => {
           if (nav.id === "cart") {
@@ -62,29 +63,41 @@ export default function Navbar() {
         })}
       </ul>
 
-      <div className="sm:hidden flex items-center">
+      {/* Mobile nav toggle */}
+      <div className="sm:hidden flex items-center relative mr-6">
         <button
           onClick={() => setToggleMenu((prev) => !prev)}
-          className="text-3xl text-black"
+          className="text-3xl text-black z-50"
           aria-label="Toggle Menu"
         >
           {toggleMenu ? <CiMenuBurger /> : <CiMenuFries />}
         </button>
+      </div>
 
-        {toggleMenu && (
-          <div className="absolute top-20 right-4 bg-black text-white z-50 p-6 rounded-xl shadow-lg min-w-[160px]">
+      {/* Mobile Dropdown Menu */}
+      {toggleMenu && (
+        <>
+          <div
+            className="fixed inset-0 bg-black opacity-10 z-40"
+            onClick={() => setToggleMenu(false)}
+          />
+          <div className="fixed top-[64px] left-0 w-full z-50 bg-white border-t border-gray-200 shadow-lg px-6 py-4">
             <ul className="flex flex-col space-y-4">
               {navLinks.map((nav) => (
-                <li key={nav.id} className="text-sm">
-                  <a href={`#${nav.id}`} className="hover:underline">
+                <li key={nav.id}>
+                  <a
+                    href={`${nav.id}`}
+                    onClick={() => setToggleMenu(false)}
+                    className="text-black text-sm hover:text-blue-600"
+                  >
                     {nav.title}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
-        )}
-      </div>
+        </>
+      )}
 
       {/* Cart Drawer */}
       {cartOpen && (
