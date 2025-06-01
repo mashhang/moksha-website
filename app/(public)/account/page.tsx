@@ -26,9 +26,11 @@ const AccountPage = () => {
   return (
     <div className="max-w-5xl mx-auto pt-24 py-10">
       <ProfileHeader />
-      <div className="bg-white rounded-2xl shadow">
+      <div className="bg-white rounded-2xl shadow mx-4">
         <TabNavigation currentTab={currentTab} setTab={setCurrentTab} />
-        <div className="p-6 space-y-4">{renderTabContent()}</div>
+        <div className="p-4 md:p-6 md:space-y-4 space-y-2">
+          {renderTabContent()}
+        </div>
       </div>
     </div>
   );

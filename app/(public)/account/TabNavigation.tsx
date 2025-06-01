@@ -12,11 +12,11 @@ const TabNavigation: React.FC<TabNavigationProps> = ({
   const tabs = ["profile", "orders", "settings"];
 
   return (
-    <nav className="flex gap-6 border-b px-6 pt-4">
+    <nav className="flex gap-4 md:gap-6 border-b px-6 pt-2 md:pt-4">
       {tabs.map((tab) => (
         <button
           key={tab}
-          className={`tab-button py-4 ${
+          className={`tab-button py-2 md:py-4 text-sm md:text-base ${
             currentTab === tab
               ? "text-black font-medium border-b-2 border-black"
               : "text-gray-500 hover:text-black"
