@@ -65,7 +65,7 @@ const AccordionItem = ({
     <div className="border-b">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full text-left py-4 flex justify-between items-center font-medium text-gray-900"
+        className="flex items-center justify-between w-full py-4 font-medium text-left text-gray-900"
       >
         <span>{title}</span>
         <span className="text-xl transition-transform">{open ? "−" : "+"}</span>
@@ -137,28 +137,28 @@ export default function ProductPage() {
   return (
     <>
       {/* Breadcrumb */}
-      <nav className="w-full px-4 md:px-10 mt-20 md:mt-24 text-xs md:text-sm text-gray-600">
+      <nav className="w-full px-4 mt-20 text-xs text-gray-600 md:px-10 md:mt-24 md:text-sm">
         <ul className="flex items-center space-x-2">
           <li>
-            <a href="/" className="hover:underline text-gray-500">
+            <a href="/" className="text-gray-500 hover:underline">
               Home
             </a>
           </li>
           <li>/</li>
           <li>
-            <a href="/products" className="hover:underline text-gray-500">
+            <a href="/products" className="text-gray-500 hover:underline">
               Products
             </a>
           </li>
           <li>/</li>
-          <li className="text-gray-900 font-medium ">{product.name} </li>
+          <li className="font-medium text-gray-900 ">{product.name} </li>
         </ul>
       </nav>
 
       {/* Main */}
-      <main className="flex flex-col md:flex-row w-full mx-auto px-4 md:px-10 py-4 mt-2 md:mt-0 md:py-8 gap-4 md:gap-8 relative">
+      <main className="relative flex flex-col w-full gap-4 px-4 py-4 mx-auto mt-2 md:flex-row md:px-10 md:mt-0 md:py-8 md:gap-8">
         {/* Thumbnails */}
-        <div className="flex flex-row md:flex-col order-2 md:order-1 gap-4 md:gap-8 items-center justify-center md:justify-start">
+        <div className="flex flex-row items-center justify-center order-2 gap-4 md:flex-col md:order-1 md:gap-8 md:justify-start">
           {product.images.map((img, index) => (
             <button
               key={index}
@@ -180,7 +180,7 @@ export default function ProductPage() {
 
         {/* Main Image Wrapper */}
         <div
-          className="oder-1 md:order-2 relative flex-shrink-0"
+          className="relative flex-shrink-0 oder-1 md:order-2"
           ref={imageRef}
         >
           <div
@@ -202,7 +202,7 @@ export default function ProductPage() {
           {/* Zoom Preview */}
           {showZoom && (
             <div
-              className="absolute top-0 left-full ml-6 z-50 border rounded-xl overflow-hidden shadow-lg bg-white"
+              className="absolute top-0 z-50 ml-6 overflow-hidden bg-white border shadow-lg left-full rounded-xl"
               style={{
                 width: `${imageSize.width}px`,
                 height: `${imageSize.height}px`,
@@ -221,12 +221,12 @@ export default function ProductPage() {
         </div>
 
         {/* Product Info */}
-        <div className="order-3 md:order-3 flex flex-col sticky top-24 self-start space-y-4 md:space-y-6">
-          {/* <span className="uppercase tracking-wider text-xs text-gray-500">
+        <div className="sticky flex flex-col self-start order-3 space-y-4 md:order-3 top-24 md:space-y-6">
+          {/* <span className="text-xs tracking-wider text-gray-500 uppercase">
             Lifestyle / Sneakers
           </span> */}
 
-          <h1 className="text-2xl md:text-4xl font-semibold text-gray-900 flex items-center justify-between pr-2">
+          <h1 className="flex items-center justify-between pr-2 text-2xl font-semibold text-gray-900 md:text-4xl">
             {product.name}
             <button
               onClick={() => {
@@ -246,16 +246,16 @@ export default function ProductPage() {
             </button>
           </h1>
 
-          <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+          <p className="text-sm leading-relaxed text-gray-600 md:text-base">
             {product.description}
           </p>
 
-          <p className="text-xl md:text-2xl font-semibold text-black">
+          <p className="text-xl font-semibold text-black md:text-2xl">
             ₱{product.price.toFixed(2)}
           </p>
 
           <div>
-            <p className="text-sm md:text-base font-medium mb-2">
+            <p className="mb-2 text-sm font-medium md:text-base">
               Select Color
             </p>
             <div className="flex flex-wrap gap-2">
@@ -276,7 +276,7 @@ export default function ProductPage() {
           </div>
 
           <div>
-            <p className="text-sm md:text-base font-medium mb-2">Select Size</p>
+            <p className="mb-2 text-sm font-medium md:text-base">Select Size</p>
             <div className="flex flex-wrap gap-2">
               {product.sizes.map((size) => (
                 <button
@@ -295,13 +295,13 @@ export default function ProductPage() {
           </div>
 
           {/* Quantity */}
-          <div className="flex border-y border-y-gray-300 flex-row items-center justify-between py-4">
-            <p className="text-sm md:text-base font-medium">Select Quantity</p>
+          <div className="flex flex-row items-center justify-between py-4 border-y border-y-gray-300">
+            <p className="text-sm font-medium md:text-base">Select Quantity</p>
             <div className="flex items-center rounded-md w-max">
               <button
                 type="button"
                 onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                className="w-10 h-10 flex items-center justify-center text-base md:text-lg font-semibold text-gray-600 hover:text-black"
+                className="flex items-center justify-center w-10 h-10 text-base font-semibold text-gray-600 md:text-lg hover:text-black"
               >
                 −
               </button>
@@ -318,7 +318,7 @@ export default function ProductPage() {
               <button
                 type="button"
                 onClick={() => setQuantity((prev) => prev + 1)}
-                className="w-10 h-10 flex items-center justify-center text-base md:text-lg font-semibold text-gray-600 hover:text-black"
+                className="flex items-center justify-center w-10 h-10 text-base font-semibold text-gray-600 md:text-lg hover:text-black"
               >
                 +
               </button>
@@ -327,21 +327,21 @@ export default function ProductPage() {
 
           <button
             onClick={handleAddToCart}
-            className="w-full bg-black text-white py-4 rounded-md hover:bg-gray-900 transition text-sm md:text-base tracking-wide cursor-pointer"
+            className="w-full py-4 text-sm tracking-wide text-white transition bg-black rounded-md cursor-pointer hover:bg-gray-900 md:text-base"
           >
             Add to Cart
           </button>
         </div>
       </main>
 
-      <section className="w-full px-4 md:px-80 py-8 md:py-12 border-y border-y-gray-300 md:mt-10 mx-auto space-y-2 md:space-y-4">
+      <section className="w-full px-4 py-8 mx-auto space-y-2 md:px-80 md:py-12 border-y border-y-gray-300 md:mt-10 md:space-y-4">
         <AccordionItem title="Product Description">
           <p className="mb-2 text-sm md:text-base">
             Top off your outfit with this essential low-top sneaker. It's
             designed with premium materials and handmade craftsmanship for
             all-day wear.
           </p>
-          <ul className="list-disc pl-5 space-y-1 text-xs md:text-sm">
+          <ul className="pl-5 space-y-1 text-xs list-disc md:text-sm">
             <li>Premium leather and suede construction</li>
             <li>Embroidered bee bird patch</li>
             <li>Handmade in Portugal</li>
@@ -363,7 +363,7 @@ export default function ProductPage() {
         </AccordionItem>
 
         <AccordionItem title="How it Fits">
-          <ul className="list-disc pl-5 space-y-1 text-xs md:text-sm">
+          <ul className="pl-5 space-y-1 text-xs list-disc md:text-sm">
             <li>Low-top design</li>
             <li>Rubber sole for comfort</li>
             <li>Fits true to size</li>
@@ -371,7 +371,7 @@ export default function ProductPage() {
         </AccordionItem>
 
         <AccordionItem title="Composition & Care">
-          <ul className="list-disc pl-5 space-y-1 text-xs md:text-sm">
+          <ul className="pl-5 space-y-1 text-xs list-disc md:text-sm">
             <li>100% Italian Leather & Suede</li>
             <li>Rubber Outsole</li>
             <li>Handmade – spot clean only</li>
@@ -380,18 +380,22 @@ export default function ProductPage() {
       </section>
 
       {/* Recommended Products */}
-      <section className="w-full px-4 md:px-10 py-12 mx-auto">
-        <h2 className="text-2xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+      <section className="w-full px-4 py-12 mx-auto md:px-10">
+        <h2 className="mb-12 text-2xl font-bold text-center text-gray-900 md:text-4xl">
           RECOMMENDED FOR YOU
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 w-full">
-          {/* <div className="flex flex-col md:flex-row gap-4 md:gap-8 justify-between w-full"> */}
+        <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-5 md:gap-8">
+          {/* <div className="flex flex-col justify-between w-full gap-4 md:flex-row md:gap-8"> */}
           {recommendedProducts.map((item) => (
             <motion.div
               key={item.id}
               whileHover={{ scale: 1.01 }}
-              transition={{ type: "spring", stiffness: 500, damping: 20 }}
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                damping: 20,
+              }}
               className="rounded-lg overflow-hidden bg-white cursor-pointer will-change-transform [backface-visibility:hidden] [transform-style:preserve-3d]"
             >
               <div className="w-full h-[185px] md:h-[420px]">
@@ -400,19 +404,19 @@ export default function ProductPage() {
                   alt={item.name}
                   width={500}
                   height={500}
-                  className="w-full h-full object-contain"
+                  className="object-contain w-full h-full"
                 />
               </div>
               <div className="px-4 pt-2 md:px-4 md:pt-2">
                 <div className="md:flex md:flex-row md:justify-between md:items-start">
-                  <h3 className="text-base md:text-lg font-medium text-gray-900">
+                  <h3 className="text-base font-medium text-gray-900 md:text-lg">
                     {item.name}
                   </h3>
-                  <p className="text-gray-600  md:mt-1 text-sm md:text-base">
+                  <p className="text-sm text-gray-600 md:mt-1 md:text-base">
                     ₱{item.price.toFixed(2)}
                   </p>
                 </div>
-                {/* <button className="mt-2 w-full text-sm md:text-base bg-black text-white py-2 rounded hover:bg-gray-800 transition">
+                {/* <button className="w-full py-2 mt-2 text-sm text-white transition bg-black rounded md:text-base hover:bg-gray-800">
                   View Product
                 </button> */}
               </div>

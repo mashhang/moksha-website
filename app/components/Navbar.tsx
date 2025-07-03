@@ -30,19 +30,19 @@ export default function Navbar() {
       </a>
 
       {/* Desktop nav */}
-      <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+      <ul className="items-center justify-end flex-1 hidden list-none sm:flex">
         {navLinks.map((nav, index) => {
           if (nav.id === "cart") {
             return (
-              <li key={nav.id} className="mr-6 cursor-pointer relative ">
+              <li key={nav.id} className="relative mr-6 cursor-pointer ">
                 <button
                   onClick={() => setCartOpen(true)}
                   aria-label="Open Cart"
-                  className="flex items-center text-black text-xl mr-4"
+                  className="flex items-center mr-4 text-xl text-black"
                 >
                   <CiShoppingCart className="text-black " />
                   {cartItems.length > 0 && (
-                    <span className="absolute top-0 right-0 bg-red-600 text-white rounded-full text-xs w-4 h-4 flex justify-center items-center">
+                    <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs text-white bg-red-600 rounded-full">
                       {cartItems.length}
                     </span>
                   )}
@@ -55,7 +55,7 @@ export default function Navbar() {
                 {isLoggedIn ? (
                   <a
                     href="/account"
-                    className="text-black text-sm hover:text-blue-600"
+                    className="text-sm text-black hover:text-blue-600"
                   >
                     Account
                   </a>
@@ -68,7 +68,7 @@ export default function Navbar() {
                   >
                     <button
                       onClick={() => setAuthOpen(true)}
-                      className="hover:text-blue-600 cursor-pointer"
+                      className="cursor-pointer hover:text-blue-600"
                     >
                       Login / Sign Up
                     </button>
@@ -92,10 +92,10 @@ export default function Navbar() {
       </ul>
 
       {/* Mobile nav toggle */}
-      <div className="sm:hidden flex items-center relative mr-6">
+      <div className="relative flex items-center mr-6 sm:hidden">
         <button
           onClick={() => setToggleMenu((prev) => !prev)}
-          className="text-3xl text-black z-50"
+          className="z-50 text-3xl text-black"
           aria-label="Toggle Menu"
         >
           {toggleMenu ? <CiMenuBurger /> : <CiMenuFries />}
@@ -106,10 +106,10 @@ export default function Navbar() {
       {toggleMenu && (
         <>
           <div
-            className="fixed inset-0 bg-black opacity-10 z-40"
+            className="fixed inset-0 z-40 bg-black opacity-10"
             onClick={() => setToggleMenu(false)}
           />
-          <div className="fixed top-[64px] left-0 w-full z-50 bg-white border-t border-gray-200 shadow-lg px-6 py-4">
+          <div className="fixed w-full top-[64px] z-50 bg-white border-t border-gray-200 left-0 shadow-lg px-6 py-4">
             <ul className="flex flex-col space-y-4">
               {navLinks.map((nav) => (
                 <li key={nav.id}>
@@ -117,7 +117,7 @@ export default function Navbar() {
                     isLoggedIn ? (
                       <a
                         href="/account"
-                        className="text-black text-sm hover:text-blue-600"
+                        className="text-sm text-black hover:text-blue-600"
                       >
                         Account
                       </a>
@@ -136,7 +136,7 @@ export default function Navbar() {
                     <a
                       href={`${nav.id}`}
                       onClick={() => setToggleMenu(false)}
-                      className="text-black text-sm hover:text-blue-600"
+                      className="text-sm text-black hover:text-blue-600"
                     >
                       {nav.title}
                     </a>

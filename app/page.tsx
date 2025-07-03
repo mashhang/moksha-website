@@ -8,7 +8,7 @@ import Footer from "./(public)/landingPage/Footer";
 
 export default function Landing() {
   return (
-    <div className="bg-white w-full overflow-hidden">
+    <div className="w-full overflow-hidden bg-white">
       <div className={`${styles.paddingX} ${styles.flexCenter} `}>
         <div className={`${styles.boxWidth}`}>{/* <Navbar /> */}</div>
       </div>

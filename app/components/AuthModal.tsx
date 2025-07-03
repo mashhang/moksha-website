@@ -22,12 +22,12 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
   return (
     <>
       <div
-        className="fixed inset-0 bg-black opacity-30 z-40"
+        className="fixed inset-0 z-40 bg-black opacity-30"
         onClick={onClose}
       />
-      <div className="fixed inset-0 flex items-center justify-center z-50 overflow-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto">
         <div
-          className="bg-white rounded-2xl shadow-lg max-w-md w-full mx-4"
+          className="w-full max-w-md mx-4 bg-white shadow-lg rounded-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           <AuthForm />

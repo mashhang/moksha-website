@@ -22,8 +22,8 @@ export default function AuthForm() {
         </h2>
       </div>
 
-      <div className="flex flex-col space-y-4 mb-4">
-        <button className="flex items-center justify-center gap-3 bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm font-medium hover:bg-gray-50">
+      <div className="flex flex-col mb-4 space-y-4">
+        <button className="flex items-center justify-center gap-3 px-4 py-2 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
           <img
             src="https://www.svgrepo.com/show/475656/google-color.svg"
             alt="Google"
@@ -32,7 +32,7 @@ export default function AuthForm() {
           Continue with Google
         </button>
 
-        <button className="flex items-center justify-center gap-3 bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700">
+        <button className="flex items-center justify-center gap-3 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.85 7.94 9.8v-6.93H7.1v-2.87h2.84V9.5c0-2.8 1.67-4.34 4.22-4.34 1.22 0 2.5.22 2.5.22v2.75h-1.41c-1.39 0-1.82.86-1.82 1.75v2.1h3.09l-.49 2.87h-2.6v6.93C18.56 20.85 22 16.84 22 12z" />
           </svg>
@@ -45,7 +45,7 @@ export default function AuthForm() {
           <div className="w-full border-t border-gray-300" />
         </div>
         <div className="relative flex justify-center text-sm">
-          <span className="bg-white px-2 text-gray-500">or</span>
+          <span className="px-2 text-gray-500 bg-white">or</span>
         </div>
       </div>
 
@@ -54,18 +54,18 @@ export default function AuthForm() {
           <input
             type="text"
             placeholder="Full Name"
-            className="w-full px-4 py-2 border rounded-lg text-sm"
+            className="w-full px-4 py-2 text-sm border rounded-lg"
           />
         )}
         <input
           type="email"
           placeholder="Email"
-          className="w-full px-4 py-2 border rounded-lg text-sm"
+          className="w-full px-4 py-2 text-sm border rounded-lg"
         />
         <input
           type="password"
           placeholder="Password"
-          className="w-full px-4 py-2 border rounded-lg text-sm"
+          className="w-full px-4 py-2 text-sm border rounded-lg"
         />
 
         {!isSignUp && (
@@ -81,20 +81,20 @@ export default function AuthForm() {
         )}
 
         {isSignUp && (
-          <label className="text-xs flex gap-2">
+          <label className="flex gap-2 text-xs">
             <input type="checkbox" required /> I agree to terms and conditions
           </label>
         )}
 
         <button
           type="submit"
-          className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
+          className="w-full py-2 text-white transition bg-indigo-600 rounded-lg hover:bg-indigo-700"
         >
           {isSignUp ? "Sign Up" : "Log In"}
         </button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-gray-600">
+      <p className="mt-6 text-sm text-center text-gray-600">
         {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
         <button
           onClick={() => setIsSignUp(!isSignUp)}
@@ -112,7 +112,7 @@ export default function AuthForm() {
         </div>
       )}
 
-      <p className="text-center text-xs text-gray-400 mt-4">
+      <p className="mt-4 text-xs text-center text-gray-400">
         Secure Login — Your information is protected
       </p>
     </div>
