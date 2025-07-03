@@ -16,10 +16,10 @@ export const navLinks = [
     id: "storePage",
     title: "Store",
   },
-  {
-    id: "search",
-    title: "Search",
-  },
+  // {
+  //   id: "search",
+  //   title: "Search",
+  // },
   {
     id: "account",
     title: "Account",
