@@ -8,15 +8,17 @@ import Image from "next/image";
 import { CiMenuFries, CiMenuBurger, CiShoppingCart } from "react-icons/ci";
 import { CartDrawer } from "../(public)/cart/CartDrawer"; // adjust the import path accordingly
 import { useCart } from "../(public)/cart";
+import AuthModal from "../components/AuthModal";
 
 export default function Navbar() {
   const router = useRouter();
-
+  const [authOpen, setAuthOpen] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const { items: cartItems, subtotal, removeItem } = useCart();
 
-  // Remove item handler for CartDrawer
+  const isLoggedIn = false; // Replace with actual auth check later
+
   const handleRemoveItem = (id: string) => {
     removeItem(id);
   };
@@ -31,9 +33,8 @@ export default function Navbar() {
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => {
           if (nav.id === "cart") {
-            // Render a cart button instead of a link
             return (
-              <li key={nav.id} className="mr-6 cursor-pointer relative">
+              <li key={nav.id} className="mr-6 cursor-pointer relative ">
                 <button
                   onClick={() => setCartOpen(true)}
                   aria-label="Open Cart"
@@ -48,11 +49,38 @@ export default function Navbar() {
                 </button>
               </li>
             );
+          } else if (nav.id === "account") {
+            return (
+              <li key={nav.id} className="mr-6 cursor-pointer ">
+                {isLoggedIn ? (
+                  <a
+                    href="/account"
+                    className="text-black text-sm hover:text-blue-600"
+                  >
+                    Account
+                  </a>
+                ) : (
+                  <a
+                    key={nav.id}
+                    className={`font-poppins font-normal cursor-pointer text-sm hover:text-blue-600 ${
+                      index === navLinks.length - 1 ? "mr-0" : "mr-10"
+                    } text-black`}
+                  >
+                    <button
+                      onClick={() => setAuthOpen(true)}
+                      className="hover:text-blue-600 cursor-pointer"
+                    >
+                      Login / Sign Up
+                    </button>
+                  </a>
+                )}
+              </li>
+            );
           } else {
             return (
               <li
                 key={nav.id}
-                className={`font-poppins font-normal cursor-pointer text-[12px] ${
+                className={`font-poppins font-normal cursor-pointer text-sm hover:text-blue-600 ${
                   index === navLinks.length - 1 ? "mr-0" : "mr-10"
                 } text-black`}
               >
@@ -85,13 +113,34 @@ export default function Navbar() {
             <ul className="flex flex-col space-y-4">
               {navLinks.map((nav) => (
                 <li key={nav.id}>
-                  <a
-                    href={`${nav.id}`}
-                    onClick={() => setToggleMenu(false)}
-                    className="text-black text-sm hover:text-blue-600"
-                  >
-                    {nav.title}
-                  </a>
+                  {nav.id === "account" ? (
+                    isLoggedIn ? (
+                      <a
+                        href="/account"
+                        className="text-black text-sm hover:text-blue-600"
+                      >
+                        Account
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          setAuthOpen(true);
+                          setToggleMenu(false);
+                        }}
+                        className="text-sm hover:text-blue-600"
+                      >
+                        Login / Sign Up
+                      </button>
+                    )
+                  ) : (
+                    <a
+                      href={`${nav.id}`}
+                      onClick={() => setToggleMenu(false)}
+                      className="text-black text-sm hover:text-blue-600"
+                    >
+                      {nav.title}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -112,11 +161,13 @@ export default function Navbar() {
           }}
           onCheckout={() => {
             setCartOpen(false);
-            // Implement checkout logic here
             alert("Proceed to Checkout (implement navigation here)");
           }}
         />
       )}
+
+      {/* Auth Modal */}
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
     </nav>
   );
 }
