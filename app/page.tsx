@@ -22,7 +22,7 @@ export default function Landing() {
       <div className={`${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <ProductList />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </div>

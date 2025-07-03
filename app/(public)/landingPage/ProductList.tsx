@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { sampleshirt } from "@/public/assets";
-import styles from "../../styles";
 
 export default function ProductList() {
   return (

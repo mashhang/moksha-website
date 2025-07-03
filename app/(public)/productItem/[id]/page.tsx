@@ -394,7 +394,7 @@ export default function ProductPage() {
               transition={{ type: "spring", stiffness: 500, damping: 20 }}
               className="rounded-lg overflow-hidden bg-white cursor-pointer will-change-transform [backface-visibility:hidden] [transform-style:preserve-3d]"
             >
-              <div className="w-full h-[180px] md:h-[420px]">
+              <div className="w-full h-[185px] md:h-[420px]">
                 <Image
                   src={item.image}
                   alt={item.name}
@@ -403,16 +403,18 @@ export default function ProductPage() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="px-4 pt-2 md:p-4">
-                <h3 className="text-base md:text-lg font-medium text-gray-900">
-                  {item.name}
-                </h3>
-                <p className="text-gray-600 md:mt-1 text-sm md:text-base">
-                  ₱{item.price.toFixed(2)}
-                </p>
-                <button className="mt-2 w-full text-sm md:text-base bg-black text-white py-2 rounded hover:bg-gray-800 transition">
+              <div className="px-4 pt-2 md:px-4 md:pt-2">
+                <div className="md:flex md:flex-row md:justify-between md:items-start">
+                  <h3 className="text-base md:text-lg font-medium text-gray-900">
+                    {item.name}
+                  </h3>
+                  <p className="text-gray-600  md:mt-1 text-sm md:text-base">
+                    ₱{item.price.toFixed(2)}
+                  </p>
+                </div>
+                {/* <button className="mt-2 w-full text-sm md:text-base bg-black text-white py-2 rounded hover:bg-gray-800 transition">
                   View Product
-                </button>
+                </button> */}
               </div>
             </motion.div>
           ))}

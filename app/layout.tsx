@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import { CartProvider } from "./(public)/cart";
 import { Toaster } from "react-hot-toast";
+import Footer from "./(public)/landingPage/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
         <CartProvider>
           <Navbar />
           {children}
+          <Footer />
           <Toaster position="bottom-center" />
         </CartProvider>
       </body>
