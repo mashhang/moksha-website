@@ -13,8 +13,8 @@ import {
 
 export const navLinks = [
   {
-    id: "storePage",
-    title: "Store",
+    id: "products",
+    title: "Products",
   },
   // {
   //   id: "search",
