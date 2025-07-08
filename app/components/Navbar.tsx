@@ -18,6 +18,7 @@ export default function Navbar() {
   const { items: cartItems, subtotal, removeItem } = useCart();
 
   const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);

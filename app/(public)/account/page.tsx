@@ -11,6 +11,7 @@ import SettingsTab from "./SettingsTab";
 const AccountPage = () => {
   const [currentTab, setCurrentTab] = useState("profile");
   const router = useRouter();
+  const [isEditing, setIsEditing] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -21,7 +22,7 @@ const AccountPage = () => {
   const renderTabContent = () => {
     switch (currentTab) {
       case "profile":
-        return <ProfileTab />;
+        return <ProfileTab isEditing={isEditing} setIsEditing={setIsEditing} />;
       case "orders":
         return <OrdersTab />;
       case "settings":
@@ -33,7 +34,7 @@ const AccountPage = () => {
 
   return (
     <div className="max-w-5xl mx-auto pt-24 py-10">
-      <ProfileHeader />
+      <ProfileHeader setIsEditing={setIsEditing} />
       <div className="bg-white rounded-2xl shadow mx-4">
         <TabNavigation currentTab={currentTab} setTab={setCurrentTab} />
         <div className="p-4 md:p-6 md:space-y-4 space-y-2">

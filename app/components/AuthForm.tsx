@@ -63,21 +63,27 @@ export default function AuthForm() {
       </div>
 
       <div className="flex flex-col mb-4 space-y-4">
-        <button className="flex items-center justify-center gap-3 px-4 py-2 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-50">
+        <a
+          href={`${process.env.NEXT_PUBLIC_API_URL}/api/oauth/google`}
+          className="flex items-center justify-center gap-3 px-4 py-2 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
+        >
           <img
             src="https://www.svgrepo.com/show/475656/google-color.svg"
             alt="Google"
             className="w-5 h-5"
           />
           Continue with Google
-        </button>
+        </a>
 
-        <button className="flex items-center justify-center gap-3 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+        <a
+          href={`${process.env.NEXT_PUBLIC_API_URL}/api/oauth/facebook`}
+          className="flex items-center justify-center gap-3 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+        >
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.85 7.94 9.8v-6.93H7.1v-2.87h2.84V9.5c0-2.8 1.67-4.34 4.22-4.34 1.22 0 2.5.22 2.5.22v2.75h-1.41c-1.39 0-1.82.86-1.82 1.75v2.1h3.09l-.49 2.87h-2.6v6.93C18.56 20.85 22 16.84 22 12z" />
+            <path d="..." />
           </svg>
           Continue with Facebook
-        </button>
+        </a>
       </div>
 
       <div className="relative my-4">
