@@ -16,9 +16,20 @@ const ProfileHeader = () => {
           </p>
         </div>
       </div>
-      <button className="bg-black text-white px-4 py-2 text-xs md:text-base rounded-xl mx-2 md:mx-0 hover:bg-gray-800 transition">
-        Edit Profile
-      </button>
+      <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+        <button className="bg-black text-white px-8 py-2 text-xs md:text-base rounded-xl mx-2 md:mx-0 hover:bg-gray-500 shadow-md transition cursor-pointer">
+          Edit
+        </button>
+        <button
+          onClick={() => {
+            localStorage.removeItem("token");
+            window.location.reload();
+          }}
+          className="bg-white text-red-400 px-4 py-2 text-xs md:text-base rounded-xl mx-2 md:mx-0 hover:text-red-700 transition cursor-pointer"
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 };

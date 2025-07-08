@@ -6,6 +6,46 @@ import { logo } from "@/public/assets";
 
 export default function AuthForm() {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    const endpoint = isSignUp ? "/api/auth/signup" : "/api/auth/login";
+    try {
+      const res = await fetch(`http://localhost:4000${endpoint}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+          ...(isSignUp && { name }),
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Something went wrong");
+      } else {
+        console.log("Success:", data);
+        // Optionally save token
+        localStorage.setItem("token", data.token);
+        // Reload page or redirect
+        window.location.reload();
+      }
+    } catch (err) {
+      setError("Server error");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="w-full p-8 bg-white rounded-2xl">
@@ -49,23 +89,32 @@ export default function AuthForm() {
         </div>
       </div>
 
-      <form className="space-y-4">
+      <form className="space-y-4" onSubmit={handleSubmit}>
         {isSignUp && (
           <input
             type="text"
             placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="w-full px-4 py-2 text-sm border rounded-lg"
+            required
           />
         )}
         <input
           type="email"
           placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full px-4 py-2 text-sm border rounded-lg"
+          required
         />
         <input
           type="password"
           placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           className="w-full px-4 py-2 text-sm border rounded-lg"
+          required
         />
 
         {!isSignUp && (
@@ -86,11 +135,13 @@ export default function AuthForm() {
           </label>
         )}
 
+        {error && <p className="text-sm text-red-500">{error}</p>}
+
         <button
           type="submit"
           className="w-full py-2 text-white transition bg-indigo-600 rounded-lg hover:bg-indigo-700"
         >
-          {isSignUp ? "Sign Up" : "Log In"}
+          {loading ? "Processing..." : isSignUp ? "Sign Up" : "Log In"}
         </button>
       </form>
 

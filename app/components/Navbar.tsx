@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { navLinks } from "../constants";
 import { logo } from "@/public/assets";
@@ -17,7 +17,13 @@ export default function Navbar() {
   const [cartOpen, setCartOpen] = useState(false);
   const { items: cartItems, subtotal, removeItem } = useCart();
 
-  const isLoggedIn = false; // Replace with actual auth check later
+  const [isLoggedIn, setIsLoggedIn] = useState<null | boolean>(null);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
+  if (isLoggedIn === null) return null;
 
   const handleRemoveItem = (id: string) => {
     removeItem(id);
@@ -51,7 +57,7 @@ export default function Navbar() {
             );
           } else if (nav.id === "account") {
             return (
-              <li key={nav.id} className="mr-6 cursor-pointer ">
+              <li key={nav.id} className="mr-8 cursor-pointer ">
                 {isLoggedIn ? (
                   <a
                     href="/account"
@@ -60,19 +66,19 @@ export default function Navbar() {
                     Account
                   </a>
                 ) : (
-                  <a
+                  <li
                     key={nav.id}
                     className={`font-poppins font-normal cursor-pointer text-sm hover:text-blue-600 ${
-                      index === navLinks.length - 1 ? "mr-0" : "mr-10"
+                      index === navLinks.length - 1 ? "mr-0" : "mr-0"
                     } text-black`}
                   >
                     <button
                       onClick={() => setAuthOpen(true)}
-                      className="cursor-pointer hover:text-blue-600"
+                      className="cursor-pointer hover:text-blue-600 text-sm"
                     >
                       Login / Sign Up
                     </button>
-                  </a>
+                  </li>
                 )}
               </li>
             );

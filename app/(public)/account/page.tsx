@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, use } from "react";
+import { useRouter } from "next/navigation";
 import ProfileHeader from "./ProfileHeader";
 import TabNavigation from "./TabNavigation";
 import ProfileTab from "./ProfileTab";
@@ -9,6 +10,13 @@ import SettingsTab from "./SettingsTab";
 
 const AccountPage = () => {
   const [currentTab, setCurrentTab] = useState("profile");
+  const router = useRouter();
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.replace("/");
+    }
+  }, []);
 
   const renderTabContent = () => {
     switch (currentTab) {
