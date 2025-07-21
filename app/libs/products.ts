@@ -23,7 +23,29 @@ import {
   yellowJacket3,
 } from "@/public/assets";
 
-export const products = [
+export interface Product {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  sizes: string[];
+  colors: string[];
+  images: string[];
+  accordion: {
+    productDescription: {
+      paragraph: string;
+      bullets: string[];
+    };
+    styleInfo: {
+      label: string;
+      value: string;
+    }[];
+    howItFits: string[];
+    compositionAndCare: string[];
+  };
+}
+
+export const products: Product[] = [
   {
     id: 1,
     name: "Brown Sweatshirt",
