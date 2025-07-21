@@ -90,8 +90,8 @@ const AccordionItem = ({
   );
 };
 
-export default function ProductPage({ params }: { params: { id: string } }) {
-  const product = products.find((p) => p.id === Number(params.id));
+export default function ProductPage({ params }: { params: { id: number } }) {
+  const product = products.find((p) => p.id === params.id);
 
   if (!product) return notFound();
 
