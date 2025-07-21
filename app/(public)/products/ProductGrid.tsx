@@ -2,7 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { sampleshirt } from "@/public/assets";
+import {
+  pinkHoodie,
+  brownSweatshirt,
+  wjeans2,
+  pinkBlazer,
+  pinkBag,
+  beigeSweatshirt,
+  blackHoodie,
+  yellowJacket,
+} from "@/public/assets";
 import ProductModal from "./ProductModal";
 
 export default function ProductGrid() {
@@ -13,11 +22,22 @@ export default function ProductGrid() {
     image: string;
   }>(null);
 
-  const products = Array.from({ length: 8 }).map((_, i) => ({
+  const images = [
+    brownSweatshirt,
+    wjeans2,
+    pinkHoodie,
+    pinkBlazer,
+    pinkBag,
+    beigeSweatshirt,
+    yellowJacket,
+    blackHoodie,
+  ];
+
+  const products = images.map((img, i) => ({
     id: i + 1,
     name: `Product ${i + 1}`,
     price: 19.99 + i * 10,
-    image: sampleshirt.src,
+    image: img.src,
   }));
 
   return (
@@ -34,31 +54,11 @@ export default function ProductGrid() {
 
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
         {products.map((product, i) => (
-          // <div
-          //   key={product.id}
-          //   className="bg-white shadow-sm md:shadow-md rounded-lg overflow-hidden hover:shadow-xl transition cursor-pointer"
-          //   onClick={() => setSelectedProduct(product)}
-          // >
-          //   <img
-          //     src={sampleshirt.src}
-          //     alt={product.name}
-          //     className="w-full object-cover select-none"
-          //     draggable="false"
-          //   />
-          //   <div className="p-2 md:p-4">
-          //     <h4 className="font-medium text-base md:text-lg">
-          //       {product.name}
-          //     </h4>
-          //     <p className="text-sm md:text-base text-gray-500">
-          //       ₱{product.price.toFixed(2)}
-          //     </p>
-          //   </div>
-          // </div>
-          <Link href={`/productItem/${i + 1}`}>
+          <Link href={`/productItem/${product.id}`} key={product.id}>
             <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition cursor-pointer">
               <img
-                src={sampleshirt.src}
-                alt={`Product ${i + 1}`}
+                src={product.image}
+                alt={product.name}
                 className="w-full object-cover"
               />
               <div className="p-2 md:p-4">

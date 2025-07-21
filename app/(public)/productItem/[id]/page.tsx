@@ -5,17 +5,26 @@ import Image from "next/image";
 import { toast } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart } from "lucide-react";
-import sampleshirt from "@/public/assets/sampleshirt.png";
+import {
+  pinkHoodie,
+  pinkHoodie2,
+  pinkHoodie3,
+  brownSweatshirt,
+  wjeans2,
+  pinkBlazer,
+  pinkBag,
+  beigeSweatshirt,
+} from "@/public/assets";
 
 const product = {
   id: 1,
-  name: "Dice Lo Bee Bird Sneaker",
+  name: "Serenity Hoodie – Blossom Pink",
   description:
-    "Premium low-top sneaker made from Italian leather and suede with embroidered bee bird patch. Rubber sole. Handmade in Portugal.",
+    "Elevate your everyday style with the Moksha Serenity Hoodie in Blossom Pink — a luxurious blend of comfort and elegance. Designed with premium fabric and subtle detailing, it’s the perfect statement of effortless sophistication.",
   price: 1299,
   sizes: ["XS", "S", "M", "L", "XL"],
-  colors: ["Black", "White", "Beige"],
-  images: [sampleshirt.src, sampleshirt.src, sampleshirt.src],
+  colors: ["Pink"],
+  images: [pinkHoodie.src, pinkHoodie2.src, pinkHoodie3.src],
 };
 
 const recommendedProducts = [
@@ -23,31 +32,31 @@ const recommendedProducts = [
     id: 2,
     name: "Cloud Runner",
     price: 999,
-    image: sampleshirt.src,
+    image: brownSweatshirt.src,
   },
   {
     id: 3,
     name: "Urban Trek Lo",
     price: 1099,
-    image: sampleshirt.src,
+    image: wjeans2.src,
   },
   {
     id: 4,
     name: "Canvas Classic",
     price: 899,
-    image: sampleshirt.src,
+    image: pinkBlazer.src,
   },
   {
     id: 5,
     name: "Zen Flex Leather",
     price: 1199,
-    image: sampleshirt.src,
+    image: pinkBag.src,
   },
   {
     id: 6,
     name: "Bag Louis Vuitton",
     price: 1999,
-    image: sampleshirt.src,
+    image: beigeSweatshirt.src,
   },
 ];
 
@@ -337,44 +346,44 @@ export default function ProductPage() {
       <section className="w-full px-4 py-8 mx-auto space-y-2 md:px-80 md:py-12 border-y border-y-gray-300 md:mt-10 md:space-y-4">
         <AccordionItem title="Product Description">
           <p className="mb-2 text-sm md:text-base">
-            Top off your outfit with this essential low-top sneaker. It's
-            designed with premium materials and handmade craftsmanship for
-            all-day wear.
+            Indulge in everyday luxury with the Moksha Serenity Hoodie. This
+            Blossom Pink essential blends elevated streetwear with premium
+            comfort for a versatile, refined look.
           </p>
           <ul className="pl-5 space-y-1 text-xs list-disc md:text-sm">
-            <li>Premium leather and suede construction</li>
-            <li>Embroidered bee bird patch</li>
-            <li>Handmade in Portugal</li>
+            <li>Crafted from ultra-soft brushed fleece</li>
+            <li>Minimalist Moksha logo embroidery</li>
+            <li>Designed for luxurious daily wear</li>
           </ul>
         </AccordionItem>
 
         <AccordionItem title="Style Info">
           <ul className="space-y-1 text-xs md:text-sm">
             <li>
-              <strong>Style:</strong> D7589
+              <strong>Style:</strong> MSH-PNK01
             </li>
             <li>
-              <strong>PC9 #:</strong> D75890026
+              <strong>PC9 #:</strong> Moksha Essentials
             </li>
             <li>
-              <strong>Color:</strong> Beige
+              <strong>Color:</strong> Blossom Pink
             </li>
           </ul>
         </AccordionItem>
 
         <AccordionItem title="How it Fits">
           <ul className="pl-5 space-y-1 text-xs list-disc md:text-sm">
-            <li>Low-top design</li>
-            <li>Rubber sole for comfort</li>
-            <li>Fits true to size</li>
+            <li>Relaxed unisex fit</li>
+            <li>Ribbed cuffs and hem for structure</li>
+            <li>True to size – size up for oversized look</li>
           </ul>
         </AccordionItem>
 
         <AccordionItem title="Composition & Care">
           <ul className="pl-5 space-y-1 text-xs list-disc md:text-sm">
-            <li>100% Italian Leather & Suede</li>
-            <li>Rubber Outsole</li>
-            <li>Handmade – spot clean only</li>
+            <li>80% Organic Cotton, 20% Recycled Polyester</li>
+            <li>Pre-shrunk for lasting shape</li>
+            <li>Machine wash cold, inside out</li>
           </ul>
         </AccordionItem>
       </section>
