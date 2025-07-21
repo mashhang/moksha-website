@@ -94,6 +94,7 @@ export default function ProductPage({ params }: { params: { id: number } }) {
   const product = products.find((p) => p.id === params.id);
 
   if (!product) return notFound();
+  if (!product.accordion) return null;
 
   // Item Variables
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
