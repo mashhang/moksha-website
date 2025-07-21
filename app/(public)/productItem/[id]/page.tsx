@@ -6,36 +6,24 @@ import { toast } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart } from "lucide-react";
 import {
-  pinkHoodie,
-  pinkHoodie2,
-  pinkHoodie3,
   brownSweatshirt,
   wjeans2,
   pinkBlazer,
   pinkBag,
   beigeSweatshirt,
 } from "@/public/assets";
-
-const product = {
-  id: 1,
-  name: "Serenity Hoodie – Blossom Pink",
-  description:
-    "Elevate your everyday style with the Moksha Serenity Hoodie in Blossom Pink — a luxurious blend of comfort and elegance. Designed with premium fabric and subtle detailing, it’s the perfect statement of effortless sophistication.",
-  price: 1299,
-  sizes: ["XS", "S", "M", "L", "XL"],
-  colors: ["Pink"],
-  images: [pinkHoodie.src, pinkHoodie2.src, pinkHoodie3.src],
-};
+import { notFound } from "next/navigation";
+import { products } from "@/app/libs/products";
 
 const recommendedProducts = [
   {
-    id: 2,
+    id: 1,
     name: "Brown Sweatshirt",
     price: 999,
     image: brownSweatshirt.src,
   },
   {
-    id: 3,
+    id: 2,
     name: "Wide Leg Jeans",
     price: 2499,
     image: wjeans2.src,
@@ -102,7 +90,11 @@ const AccordionItem = ({
   );
 };
 
-export default function ProductPage() {
+export default function ProductPage({ params }: { params: { id: string } }) {
+  const product = products.find((p) => p.id === Number(params.id));
+
+  if (!product) return notFound();
+
   // Item Variables
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
@@ -177,7 +169,7 @@ export default function ProductPage() {
               }`}
             >
               <Image
-                src={img}
+                src={product.images[index]}
                 alt={`Thumb ${index + 1}`}
                 width={400}
                 height={400}
@@ -346,44 +338,38 @@ export default function ProductPage() {
       <section className="w-full px-4 py-8 mx-auto space-y-2 md:px-80 md:py-12 border-y border-y-gray-300 md:mt-10 md:space-y-4">
         <AccordionItem title="Product Description">
           <p className="mb-2 text-sm md:text-base">
-            Indulge in everyday luxury with the Moksha Serenity Hoodie. This
-            Blossom Pink essential blends elevated streetwear with premium
-            comfort for a versatile, refined look.
+            {product.accordion.productDescription.paragraph}
           </p>
           <ul className="pl-5 space-y-1 text-xs list-disc md:text-sm">
-            <li>Crafted from ultra-soft brushed fleece</li>
-            <li>Minimalist Moksha logo embroidery</li>
-            <li>Designed for luxurious daily wear</li>
+            {product.accordion.productDescription.bullets.map((bullet, idx) => (
+              <li key={idx}>{bullet}</li>
+            ))}
           </ul>
         </AccordionItem>
 
         <AccordionItem title="Style Info">
           <ul className="space-y-1 text-xs md:text-sm">
-            <li>
-              <strong>Style:</strong> MSH-PNK01
-            </li>
-            <li>
-              <strong>PC9 #:</strong> Moksha Essentials
-            </li>
-            <li>
-              <strong>Color:</strong> Blossom Pink
-            </li>
+            {product.accordion.styleInfo.map((info, idx) => (
+              <li key={idx} className="list-disc pl-5">
+                <strong>{info.label}:</strong> {info.value}
+              </li>
+            ))}
           </ul>
         </AccordionItem>
 
         <AccordionItem title="How it Fits">
           <ul className="pl-5 space-y-1 text-xs list-disc md:text-sm">
-            <li>Relaxed unisex fit</li>
-            <li>Ribbed cuffs and hem for structure</li>
-            <li>True to size – size up for oversized look</li>
+            {product.accordion.howItFits.map((fit, idx) => (
+              <li key={idx}>{fit}</li>
+            ))}
           </ul>
         </AccordionItem>
 
         <AccordionItem title="Composition & Care">
           <ul className="pl-5 space-y-1 text-xs list-disc md:text-sm">
-            <li>80% Organic Cotton, 20% Recycled Polyester</li>
-            <li>Pre-shrunk for lasting shape</li>
-            <li>Machine wash cold, inside out</li>
+            {product.accordion.compositionAndCare.map((care, idx) => (
+              <li key={idx}>{care}</li>
+            ))}
           </ul>
         </AccordionItem>
       </section>

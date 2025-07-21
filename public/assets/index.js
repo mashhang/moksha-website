@@ -23,6 +23,8 @@ import pinkHoodie from "./pinkHoodie.jpg";
 import pinkHoodie2 from "./pinkHoodie2.jpg";
 import pinkHoodie3 from "./pinkHoodie3.jpg";
 import brownSweatshirt from "./brown-sweatshirt.jpg";
+import brownSweatshirt2 from "./brown-sweatshirt2.jpg";
+import brownSweatshirt3 from "./brown-sweatshirt3.jpg";
 import wjeans from "./wjeans.jpg";
 import wjeans2 from "./wjeans2.jpg";
 import wjeans3 from "./wjeans3.jpg";
@@ -44,6 +46,8 @@ export {
   binance,
   blackHoodie,
   brownSweatshirt,
+  brownSweatshirt2,
+  brownSweatshirt3,
   coinbase,
   dropbox,
   logo,
