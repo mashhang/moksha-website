@@ -12,7 +12,7 @@ import {
   pinkBag,
   beigeSweatshirt,
 } from "@/public/assets";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { products } from "@/app/libs/products";
 
 const recommendedProducts = [
@@ -90,8 +90,10 @@ const AccordionItem = ({
   );
 };
 
-export default function ProductPage({ params }: { params: { id: string } }) {
-  const product = products.find((p) => p.id === Number(params.id));
+export default function ProductPage() {
+  const params = useParams();
+  const id = Number(params.id);
+  const product = products.find((p) => p.id === id);
 
   if (!product) return notFound();
 
