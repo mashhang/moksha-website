@@ -33,10 +33,23 @@ export default function ProductGrid() {
     blackHoodie,
   ];
 
+  const names = [
+    "Brown Sweatshirt",
+    "Wide Leg Jeans",
+    "Serenity Hoodie – Blossom Pink",
+    "Pink Blazer",
+    "Pink Bag",
+    "Beige Sweatshirt",
+    "Yellow Jacket",
+    "Black Hoodie",
+  ];
+
+  const prices = [999, 2499, 1299, 2999, 1499, 999, 2399, 999];
+
   const products = images.map((img, i) => ({
     id: i + 1,
-    name: `Product ${i + 1}`,
-    price: 19.99 + i * 10,
+    name: names[i],
+    price: prices[i],
     image: img.src,
   }));
 
@@ -63,10 +76,10 @@ export default function ProductGrid() {
               />
               <div className="p-2 md:p-4">
                 <h4 className="font-medium text-base md:text-lg">
-                  Product {i + 1}
+                  {product.name}
                 </h4>
                 <p className="text-sm md:text-base text-gray-500">
-                  ₱{(19.99 + i * 10).toFixed(2)}
+                  ₱{products[i].price.toFixed(2)}
                 </p>
               </div>
             </div>

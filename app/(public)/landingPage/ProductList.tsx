@@ -1,9 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { sampleshirt } from "@/public/assets";
+import { pinkBlazer, wjeans2, brownSweatshirt } from "@/public/assets";
 
 export default function ProductList() {
+  const images = [pinkBlazer, brownSweatshirt, wjeans2];
+  const names = ["Pink Blazer", "Brown Sweatshirt", "Wide Leg Jeans"];
+  const prices = [2999, 999, 2499];
+
+  const products = images.map((img, i) => ({
+    id: i + 1,
+    name: names[i],
+    price: prices[i],
+    image: img.src,
+  }));
+
   return (
     <div className="w-full px-5 py-16 md:py-24">
       <div className="flex mb-4 md:mb-8 justify-between">
@@ -28,13 +39,17 @@ export default function ProductList() {
                     className="object-cover object-center inset-0 overflow-hidden p-2 md:p-4 self-center"
                     loading="lazy"
                     sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-                    src={sampleshirt}
+                    width={500}
+                    height={500}
+                    src={products[index].image}
                     alt="shirt"
                   />
                 </div>
                 <div className="flex mt-2 md:mt-4 justify-between">
-                  <p>Graphic Shirt 1</p>
-                  <p className="text-gray-500">$19.99</p>
+                  <p>{products[index].name}</p>
+                  <p className="text-gray-500">
+                    ₱ {products[index].price.toFixed(2)}
+                  </p>
                 </div>
               </div>
             </a>

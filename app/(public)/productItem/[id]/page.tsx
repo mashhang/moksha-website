@@ -30,32 +30,32 @@ const product = {
 const recommendedProducts = [
   {
     id: 2,
-    name: "Cloud Runner",
+    name: "Brown Sweatshirt",
     price: 999,
     image: brownSweatshirt.src,
   },
   {
     id: 3,
-    name: "Urban Trek Lo",
-    price: 1099,
+    name: "Wide Leg Jeans",
+    price: 2499,
     image: wjeans2.src,
   },
   {
     id: 4,
-    name: "Canvas Classic",
-    price: 899,
+    name: "Pink Blazer",
+    price: 2999,
     image: pinkBlazer.src,
   },
   {
     id: 5,
-    name: "Zen Flex Leather",
-    price: 1199,
+    name: "Pink Bag",
+    price: 1499,
     image: pinkBag.src,
   },
   {
     id: 6,
-    name: "Bag Louis Vuitton",
-    price: 1999,
+    name: "Beige Sweatshirt",
+    price: 999,
     image: beigeSweatshirt.src,
   },
 ];
