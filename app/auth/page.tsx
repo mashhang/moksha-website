@@ -27,7 +27,7 @@ export default function AuthPage() {
             router.replace("/");
           } else {
             console.log("❌ Failed to fetch user info");
-            router.replace("/login");
+            router.replace("/");
           }
         });
     } else {

@@ -9,10 +9,6 @@ import Footer from "./(public)/landingPage/Footer";
 export default function Landing() {
   return (
     <div className="w-full overflow-hidden bg-white">
-      <div className={`${styles.paddingX} ${styles.flexCenter} `}>
-        <div className={`${styles.boxWidth}`}>{/* <Navbar /> */}</div>
-      </div>
-
       {/* BANNER */}
       <div className={`${styles.heading2}`}>
         <Banner />
@@ -22,7 +18,6 @@ export default function Landing() {
       <div className={`${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <ProductList />
-          {/* <Footer /> */}
         </div>
       </div>
     </div>

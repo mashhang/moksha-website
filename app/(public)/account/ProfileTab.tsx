@@ -6,6 +6,13 @@ type Props = {
   setIsEditing: (value: boolean) => void;
 };
 
+type UserProfile = {
+  name: string;
+  email: string;
+  phone?: string;
+  address?: string;
+};
+
 export default function ProfileTab({
   isEditing,
   setIsEditing,
@@ -13,26 +20,42 @@ export default function ProfileTab({
   isEditing: boolean;
   setIsEditing: (value: boolean) => void;
 }) {
-  const [user, setUser] = useState<{
-    name: string;
-    email: string;
-    phone?: string;
-    address?: string;
-  } | null>(null);
+  const [user, setUser] = useState<UserProfile | null>(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    const token = localStorage.getItem("token");
+
+    if (!token) return;
+
+    const fetchUserDetails = async () => {
+      try {
+        const res = await fetch("http://localhost:4000/api/auth/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch user details");
+        }
+
+        const data = await res.json();
+        setUser(data.user);
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      }
+    };
+
+    fetchUserDetails();
   }, []);
+
   const initials = user?.name
     ? user.name
         .split(" ")
         .map((n) => n[0])
         .join("")
         .toUpperCase()
-    : "US";
+    : "01";
 
   const handleSave = async () => {
     if (!user) return;
@@ -83,8 +106,8 @@ export default function ProfileTab({
             className="border rounded px-2 py-1 w-full"
           />
         ) : (
-          <p className="text-sm md:text-base text-gray-800">
-            {user?.name || "User Name"}
+          <p className="text-sm md:text-base text-gray-800 capitalize">
+            {user?.name}
           </p>
         )}
       </div>
@@ -157,7 +180,7 @@ export default function ProfileTab({
                     : null
                 );
               }}
-              placeholder="998 364 9840"
+              placeholder="912 345 6789"
               className="border rounded px-2 py-1 w-full"
             />
           </div>
@@ -178,6 +201,7 @@ export default function ProfileTab({
                 prev ? { ...prev, address: e.target.value } : null
               )
             }
+            placeholder="123 Moksha Lane, Pasig City"
             className="border rounded px-2 py-1 w-full"
           />
         ) : (
